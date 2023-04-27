@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     
+    public float duckHeight = 0.5f;
+    public float standingHeight = 1.0f;
+    
     private Vector3 velocity;
 
     private bool isGrounded;
@@ -27,6 +30,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) {
+            transform.localScale = new Vector3(1, duckHeight, 1);
+        }
+        else {
+            transform.localScale = new Vector3(1, standingHeight, 1);
+        }
+        
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (isGrounded && velocity.y < 0)

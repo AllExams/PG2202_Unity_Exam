@@ -5,7 +5,13 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     public float health = 50f;
+    private Animator animator;
 
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+    
     public void TakeDamage(float amount)
     {
         health -= amount;
@@ -17,6 +23,7 @@ public class Target : MonoBehaviour
 
     void Die()
     {
-        Destroy(gameObject);
+        animator.SetBool("IsDead", true);
+        //Destroy(gameObject);
     }
 }

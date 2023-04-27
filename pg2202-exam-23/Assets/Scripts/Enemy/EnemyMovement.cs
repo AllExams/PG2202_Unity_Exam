@@ -31,20 +31,31 @@ public class EnemyMovement : MonoBehaviour
         // Check if the enemy is close enough to attack
         float distanceToTarget = Vector3.Distance(transform.position, target.position);
         if (distanceToTarget <= attackDistance && !isAttacking)
-        {
+        {   
             StartCoroutine(AttackWithDelay());
         }
-        
-        animator.SetFloat("Speed", step);
+
+        if (animator.GetBool("IsDead"))
+        {
+            speed = 0f;
+            target = null;
+            Invoke("DelayedCode", 5f);
+        }
+    }
+    
+    void DelayedCode() {
+        Destroy(gameObject);
     }
 
     IEnumerator AttackWithDelay()
     {
         isAttacking = true;
-        animator.SetTrigger("Attack");
+        //animator.SetTrigger("Attack");
+        animator.SetBool("IsAttacking", true);
         Debug.Log("Enemy attacks target!");
         target.GetComponent<PlayerHealth>().TakeDamage(10); // Assumes the target has a PlayerHealth script
         yield return new WaitForSeconds(attackDelay);
         isAttacking = false;
+        animator.SetBool("IsAttacking", false);
     }
 }
