@@ -10,13 +10,16 @@ public class PlayerHealth : MonoBehaviour {
     public GameObject deathEffect;
     public AudioSource audioSource;
     public AudioClip damageSound;
+    public HealthbarScript healthbar;
 
     void Start() {
         currentHealth = startingHealth;
+        healthbar.SetMaxHealth(startingHealth);
     }
 
     public void TakeDamage(int damage) {
         currentHealth -= damage;
+        healthbar.SetHealth(currentHealth);
         Debug.Log("Player takes " + damage + " damage! Current health: " + currentHealth);
 
         if (currentHealth <= 0) {
