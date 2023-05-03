@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15333,6 +15333,7 @@ GameObject:
   - component: {fileID: 1571317773}
   - component: {fileID: 1571317775}
   - component: {fileID: 1571317774}
+  - component: {fileID: 1571317776}
   m_Layer: 5
   m_Name: EnemiesLeftNum
   m_TagString: Untagged
@@ -15457,6 +15458,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1571317772}
   m_CullTransparentMesh: 1
+--- !u!114 &1571317776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571317772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e896dd9d38b6447b281172eb0944e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instance: {fileID: 0}
+  enemyCounter: {fileID: 1571317774}
 --- !u!4 &1575190216 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4307499703867576, guid: abf04ed981f9b0e4daef0f76c3c9fc7c, type: 3}

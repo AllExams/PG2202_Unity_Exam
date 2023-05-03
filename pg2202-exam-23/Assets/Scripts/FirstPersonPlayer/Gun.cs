@@ -14,13 +14,16 @@ public class Gun : MonoBehaviour
     public Camera fpsCam;
     public ParticleSystem muzzelFlash;
     public GameObject impactEffect;
+    private GameObject targetObject;
+    private Target target;
 
-    private float nextTimeToFire = 0f;
+	private float nextTimeToFire = 0f;
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
+		targetObject = GameObject.FindWithTag("Target");
+		target = targetObject.GetComponent<Target>();
+	}
 
     // Update is called once per frame
     void Update()
@@ -36,13 +39,12 @@ public class Gun : MonoBehaviour
     void Shoot()
     {
         muzzelFlash.Play();
-        
-        RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
-        { 
-            Debug.Log(hit.transform.name);
+		RaycastHit hit;
 
-            Target target = hit.transform.GetComponent<Target>();
+        
+		if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        { 
+            target = hit.transform.GetComponent<Target>();
             if (target != null)
             {
                 target.TakeDamage(damage);
