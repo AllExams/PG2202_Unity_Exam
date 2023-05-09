@@ -6,6 +6,18 @@ using UnityEngine.SceneManagement;
 public class MenuScript : MonoBehaviour
 {
 
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			QuitGame();
+		}
+		if(Input.GetKeyDown(KeyCode.Return))
+		{
+			StartGame();
+		}
+	}
+
 	public void StartGame()
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
